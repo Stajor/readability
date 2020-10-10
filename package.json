@@ -1,0 +1,12 @@
+{
+  "name": "readability",
+  "description": "Mozilla Readability port to PHP",
+  "engines": {
+    "node": ">=10"
+  },
+  "dependencies": {
+    "@mozilla/readability": "^0.3.0",
+    "jsdom": "^16.4.0"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,38 @@
+{
+    "name": "stajor/readability",
+    "description": "Mozilla Readability port to PHP",
+    "type": "library",
+    "license": "Apache License 2.0",
+    "keywords": [
+        "php",
+        "readability"
+    ],
+    "authors": [
+        {
+            "name": "Alex B"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "symfony/process": "^5.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Readability\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Readability\\Test\\": "tests/"
+        },
+        "classmap": [
+            "tests/"
+        ]
+    },
+    "scripts": {
+        "test": "phpunit tests"
+    }
+}
