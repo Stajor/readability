@@ -2,7 +2,7 @@
     "name": "stajor/readability",
     "description": "Mozilla Readability port to PHP",
     "type": "library",
-    "license": "Apache License 2.0",
+    "license": "MIT",
     "keywords": [
         "php",
         "readability"
