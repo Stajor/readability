@@ -11,7 +11,7 @@ class Readability {
     private string $url;
 
     public function __construct(string $html, string $url) {
-        $this->html = str_replace('`', "'", $html);
+        $this->html = $html;
         $this->url  = $url;
     }
 
@@ -20,9 +20,9 @@ class Readability {
      * @throws ReadabilityException
      */
     public function parse(): ReadabilityArticle {
-        $output = json_decode($this->exec([$this->executable(), '-e', $this->jsCode()]), true);
+        $output = $this->exec([$this->executable(), __DIR__.'/readability.js', $this->url, $this->html]);
 
-        return new ReadabilityArticle($output);
+        return new ReadabilityArticle(json_decode($output, true));
     }
 
     /**
@@ -47,20 +47,5 @@ class Readability {
         }
 
         return trim($process->getOutput());
-    }
-
-    /**
-     * @return string
-     */
-    private function jsCode(): string {
-        return <<<JS
-            var { Readability } = require('@mozilla/readability');
-            var JSDOM = require('jsdom').JSDOM;
-            var doc = new JSDOM(`{$this->html}`, {url: "{$this->url}"});
-            let reader = new Readability(doc.window.document);
-            let article = reader.parse();
-            
-            console.log(JSON.stringify(article));
-        JS;
     }
 }

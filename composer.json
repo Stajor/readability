@@ -14,6 +14,7 @@
     ],
     "require": {
         "php": ">=7.4",
+        "ext-json": "*",
         "symfony/process": "^5.1"
     },
     "require-dev": {
