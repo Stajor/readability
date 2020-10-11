@@ -1,6 +1,6 @@
 {
     "name": "stajor/readability",
-    "description": "Mozilla Readability port to PHP",
+    "description": "Mozilla Readability bridge to PHP",
     "type": "library",
     "license": "MIT",
     "keywords": [

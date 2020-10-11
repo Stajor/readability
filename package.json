@@ -1,6 +1,6 @@
 {
   "name": "readability",
-  "description": "Mozilla Readability port to PHP",
+  "description": "Mozilla Readability bridge to PHP",
   "license": "MIT",
   "engines": {
     "node": ">=10"
