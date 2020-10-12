@@ -1,5 +1,6 @@
 <?php namespace Readability;
 
+use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
 /**
@@ -40,10 +41,12 @@ class Readability {
      */
     private function exec(array $commands) {
         $process = new Process($commands);
-        $process->run();
 
-        if ($process->getExitCode() !== 0) {
-            throw new ReadabilityException($process->getErrorOutput(), $process->getExitCode());
+        try {
+            $process->mustRun();
+            $process->stop(3, SIGINT);
+        } catch (ProcessFailedException $e) {
+            throw new ReadabilityException($e->getMessage(), $e->getCode(), $e);
         }
 
         return trim($process->getOutput());
